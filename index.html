@@ -2,29 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Nintendo Switch Preserve</title>
   <style>
     body {
       font-family: sans-serif;
-      background: #f6fff8;
-      color: #2e4d3d;
-      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
       padding: 2rem;
     }
     h1 {
-      font-size: 2.5rem;
+      text-align: center;
+      color: #2c662d;
     }
-    .note {
-      margin-top: 1rem;
-      font-style: italic;
-      color: #6c8b7d;
+    ul {
+      list-style-type: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+    li {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .title {
+      font-weight: bold;
+      color: #3c3c3c;
+      font-size: 1.2rem;
+    }
+    .desc {
+      margin-top: 0.5rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <h1>🌱 The Nintendo Switch Preserve</h1>
-  <p>Welcome to the public game ID database!</p>
-  <p class="note">(More features coming soon)</p>
+  <h1>The Nintendo Switch Preserve 🌱</h1>
+  <ul id="gameList"></ul>
+
+  <script>
+    const list = document.getElementById('gameList');
+
+    fetch('https://github.com/switch-preserve/preserve-db/raw/refs/heads/main/preserve.json')
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(game => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <div class="title">${game.title}</div>
+            <div class="desc">${game.description}</div>
+          `;
+          list.appendChild(li);
+        });
+      })
+      .catch(err => {
+        list.innerHTML = '<li>Error loading game list. Please try again later.</li>';
+        console.error('Error loading preserve.json:', err);
+      });
+  </script>
 </body>
 </html>
