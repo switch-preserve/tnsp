@@ -91,12 +91,17 @@
                     
                     // Creating the image element for the icon
                     const img = document.createElement('img');
-                    img.src = `https://raw.githubusercontent.com/switch-preserve/preserve-db/refs/heads/main/icons/${game.PreserveID}.png`; // Fetch the icon by PreserveID
-                    img.alt = `${game.name} icon`;  // Alt text for the image
+                    img.src = `https://raw.githubusercontent.com/switch-preserve/preserve-db/main/icons/${game.preserve_id}.png`;
+                    img.alt = `${game.title} icon`;
+                    // Add error handling for images
+                    img.onerror = function() {
+                        this.src = 'https://raw.githubusercontent.com/switch-preserve/preserve-db/refs/heads/main/icons/default.png';
+                        this.onerror = null; // Prevent infinite loop if default image also fails
+                    };
 
                     // Creating the text container for name and short description
                     const textContainer = document.createElement('div');
-                    textContainer.innerHTML = `<strong>${game.name}</strong><br><span>${game.shortDescription}</span>`;
+                    textContainer.innerHTML = `<strong>${game.title}</strong><br><span>${game.description}</span>`;
                     
                     // Append the icon and text to the list item
                     li.appendChild(img);
