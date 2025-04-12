@@ -27,13 +27,13 @@
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
         }
 
@@ -89,24 +89,13 @@
         .game-item strong {
             display: block;
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
         }
 
         .game-item span {
             color: #666;
             font-size: 0.95rem;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
@@ -124,14 +113,14 @@
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>The Nintendo Switch Preserve</h1>
+        <h1>The Nintendo Switch Preserve 🌱</h1>
     </header>
     <div class="content">
         <h2>Game List</h2>
@@ -139,9 +128,6 @@
             <!-- Game list will be dynamically populated here -->
         </ul>
     </div>
-    <footer>
-        <p>&copy; 2025 The Nintendo Switch Preserve. All Rights Reserved.</p>
-    </footer>
 
     <script>
         async function fetchGameList() {
